@@ -1,17 +1,20 @@
 public class ListaDupla {
     Node cabeca;
     Node cauda;
+    int tamanho = 0;
 
     public void adicionarUltimo(Object dado) {
         Node novoNo = new Node(dado);
         if (cauda == null){
             cabeca = novoNo;
             cauda = novoNo;
+            tamanho++;
         }
         else {
             cauda.proximo = novoNo;
             novoNo.anterior = cauda;
             cauda = novoNo;
+            tamanho++;
         }
     }
 
@@ -20,11 +23,13 @@ public class ListaDupla {
         if (cauda == null){
             cabeca = novoNo;
             cauda = novoNo;
+            tamanho++;
         }
         else {
             cabeca.anterior = novoNo;
             novoNo.proximo = cabeca;
             cabeca = novoNo;
+            tamanho++;
         }
     }
 
@@ -39,6 +44,7 @@ public class ListaDupla {
             cabeca = null;
 
         }
+        tamanho--;
     }
 
     public void removerInicio() {
@@ -51,6 +57,7 @@ public class ListaDupla {
         } else {
             cauda = null;
         }
+        tamanho--;
     }
 
     public void percorrerPraFrente() {
