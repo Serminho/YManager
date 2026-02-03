@@ -1,42 +1,57 @@
 public class Peca {
     private String nome;
-    private float preco;
-    private int quantidade;
+    private int preco;
+    private int custo;
+    String material;
 
-    public Peca(String nome) {
-        this.nome = nome;
-        this.preco = 0;
-        this.quantidade = 0;
-    }
-    public Peca(String nome, float preco) {
+    public Peca(String nome, int preco, int custo, String material) {
         this.nome = nome;
         this.preco = preco;
-        this.quantidade = 0;
+        this.custo = custo;
+        this.material = material;
     }
-    public Peca(String nome, int quantidade) {
-        this.nome = nome;
-        this.preco = 0;
-        this.quantidade = quantidade;
-    }
-    public Peca(String nome, float preco, int quantidade) {
+    public Peca(String nome, int preco) {
         this.nome = nome;
         this.preco = preco;
-        this.quantidade = quantidade;
+        this.custo = 0;
+        this.material = "";
+    }
+    public Peca(String nome, int preco, int custo) {
+        this.nome = nome;
+        this.preco = preco;
+        this.custo = custo;
+        this.material = "";
     }
 
     public String getNome() {
         return nome;
     }
-    public float getPreco() {
+    public int getPreco() {
         return preco;
     }
-    public int getQuantidade() {
-        return quantidade;
+    public String getMaterial() {
+        return material;
+    }
+    public int getCusto() {
+        return custo;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    public void setPreco(int preco) {
+        this.preco = preco;
+    }
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+    public void setCusto(int custo) {
+        this.custo = custo;
     }
 
     @Override
     public String toString() {
-        return "Peça: " + nome + " | " + " Preço: " + preco + " | " + " Quantidade: " + quantidade + " | ";
+        return "Peça: " + nome + " | " + " Preço: " + preco + " | " + " Material: " + material + " | ";
     }
     
 }

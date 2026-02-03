@@ -1,4 +1,4 @@
-public class ListaPecas {
+public class ListaDupla {
     Node cabeca;
     Node cauda;
 
@@ -59,15 +59,15 @@ public class ListaPecas {
             System.out.print("\n" + atual.dado + " ");
             atual = atual.proximo;
         }
-        System.out.println("\n---");
+        System.out.println("\n===");
     }
 
     public void percorrerPraTras() {
         Node atual = cauda;
         while (atual != null) {
-            System.out.print(atual.dado + " ");
+            System.out.print("\n" + atual.dado + " ");
             atual = atual.anterior;
         }
-        System.out.println("---");
+        System.out.println("\n===");
     }
 }

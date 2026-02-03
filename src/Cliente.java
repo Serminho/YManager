@@ -8,7 +8,7 @@ public class Cliente {
     }
     public Cliente(String nome) {
         this.nome = nome;
-        this.numero = "";
+        this.numero = "Nenhum número cadastrado";
     }
 
     public String getNome() {
