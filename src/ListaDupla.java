@@ -63,10 +63,10 @@ public class ListaDupla {
     public void percorrerPraFrente() {
         Node atual = cabeca;
         while (atual != null) {
-            System.out.print("\n" + atual.dado + " ");
+            System.out.print("\n| " + atual.dado + " ");
             atual = atual.proximo;
         }
-        System.out.println("\n===");
+        System.out.println("\n+======");
     }
 
     public void percorrerPraTras() {
@@ -76,5 +76,30 @@ public class ListaDupla {
             atual = atual.anterior;
         }
         System.out.println("\n===");
+    }
+
+    public boolean removerMeio(String nomePecaRemover) {
+        Node atual = cabeca;
+        while (atual != null) {
+            Peca pecaAtual = (Peca) atual.dado;
+            if (pecaAtual.getNome().equalsIgnoreCase(nomePecaRemover)) {
+                if (atual.anterior != null) {
+                    atual.anterior.proximo = atual.proximo;
+                } else {
+                    cabeca = atual.proximo;
+                }
+            
+                if (atual.proximo != null) {
+                    atual.proximo.anterior = atual.anterior;
+                } else {
+                    cauda = atual.anterior;
+                }
+            
+                tamanho--;
+                return true;
+            }
+            atual = atual.proximo;
+        }
+        return false;
     }
 }
