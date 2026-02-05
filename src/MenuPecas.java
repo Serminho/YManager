@@ -1,29 +1,23 @@
 import java.util.Scanner;
 
 public class MenuPecas {
-    public static void main(String[] args) {
-        System.out.println("Bem-vindo ao YManager!");
-        ListaDupla listaPecas = new ListaDupla();
-        exibirMenuPeca(listaPecas);
-    }
-
     public static void exibirMenuPeca(ListaDupla listaPecas) {
         Scanner scanner = new Scanner(System.in);
-        int opEM = 0;
+        int opMP = 0;
 
         
-        while (opEM != 4) {
+        while (opMP != 4) {
             System.out.println("\n+====================+");
             System.out.println("| 1. Adicionar Peça  |");
             System.out.println("| 2.  Remover Peça   |");
             System.out.println("| 3.  Listar Peças   |");
-            System.out.println("| 4.     Sair        |");
+            System.out.println("| 4.     Voltar      |");
             System.out.println("+====================+");
             System.out.print("| Escolha uma opção: ");
 
-            opEM = scanner.nextInt();
+            opMP = scanner.nextInt();
 
-            switch (opEM) {
+            switch (opMP) {
                 case 1:
                     System.out.println("| Adicionar Peça selecionado |");
                     System.out.println("| Qual o nome da peça?");
@@ -96,15 +90,14 @@ public class MenuPecas {
                     break;
 
                 case 4:
-                    System.out.println("Saindo do programa...");
+                    System.out.println("| Saindo do menu de peças...");
                     break;
 
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("| Opção inválida.");
                     break;
             }
         }
-        scanner.close();
     }
 
     public static void pausar(Scanner scanner) {

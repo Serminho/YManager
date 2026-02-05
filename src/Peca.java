@@ -14,13 +14,13 @@ public class Peca {
         this.nome = nome;
         this.preco = preco;
         this.custo = 0;
-        this.material = "";
+        this.material = "Material Indefinido";
     }
     public Peca(String nome, int preco, int custo) {
         this.nome = nome;
         this.preco = preco;
         this.custo = custo;
-        this.material = "";
+        this.material = "Material Indefinido";
     }
 
     public String getNome() {
@@ -51,7 +51,7 @@ public class Peca {
 
     @Override
     public String toString() {
-        return "Peça: " + nome + " | " + " Preço: " + preco + " | " + " Material: " + material + " | ";
+        return "| Peça: " + nome + " | " + " Preço: " + preco + " | " +  " Custo: " + custo + " | " + " Material: " + material + " | ";
     }
     
 }
