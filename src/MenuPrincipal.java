@@ -11,13 +11,14 @@ public class MenuPrincipal {
         int opMPr = 0;
 
         while (opMPr != 3) {
-            System.out.println("\n+=====================+");
-            System.out.println("|    Menu Principal   |");
-            System.out.println("+=====================+");
-            System.out.println("| 1. Gerenciar Peças  |");
-            System.out.println("| 2. Gerenciar Vendas |");
-            System.out.println("| 3. Sair             |");
-            System.out.println("+=====================+");
+            System.out.println("\n+=======================+");
+            System.out.println("|     Menu Principal    |");
+            System.out.println("+=======================+");
+            System.out.println("| 1. Gerenciar Peças    |");
+            System.out.println("| 2. Gerenciar Vendas   |");
+            System.out.println("| 3. Gerenciar Clientes |");
+            System.out.println("| 4. Sair               |");
+            System.out.println("+=======================+");
             System.out.print("| Escolha uma opção: ");
         
             opMPr = scanner.nextInt();
@@ -31,6 +32,9 @@ public class MenuPrincipal {
                     MenuVendas.exibirMenuVendas();
                     break;
                 case 3:
+                    MenuClientes.exibirMenuClientes();
+                    break;
+                case 4:
                     System.out.println("| Saindo do programa...");
                     break;
 
