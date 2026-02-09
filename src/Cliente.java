@@ -44,6 +44,21 @@ public class Cliente {
         this.totalGasto = totalGasto;
     }
 
+    public void adicionarCompra(int valor) {
+        this.totalCompras++;
+        this.totalGasto += valor;
+    }
+
+    public void removerCompra(int valor) {
+        if (this.totalCompras > 0) {
+            this.totalCompras--;
+            this.totalGasto -= valor;
+        }
+        else {
+            System.out.println("| O cliente não possui compras para remover.");
+        }
+    }
+
     @Override
     public String toString() {
         return "Cliente: " + nome + " | " + " Numero: " + numero + " | ";

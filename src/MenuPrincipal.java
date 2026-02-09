@@ -10,7 +10,7 @@ public class MenuPrincipal {
         Scanner scanner = new Scanner(System.in);
         int opMPr = 0;
 
-        while (opMPr != 3) {
+        while (opMPr != 4) {
             System.out.println("\n+=======================+");
             System.out.println("|     Menu Principal    |");
             System.out.println("+=======================+");
@@ -32,7 +32,8 @@ public class MenuPrincipal {
                     MenuVendas.exibirMenuVendas();
                     break;
                 case 3:
-                    MenuClientes.exibirMenuClientes();
+                    ListaDupla listaClientes = new ListaDupla();
+                    MenuClientes.exibirMenuClientes(listaClientes);
                     break;
                 case 4:
                     System.out.println("| Saindo do programa...");

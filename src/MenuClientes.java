@@ -1,16 +1,11 @@
 import java.util.Scanner;
 
 public class MenuClientes {
-
-    public static void exibirMenuClientes() {
-        ListaDupla listaClientes = new ListaDupla();
-        exibirMenuClientes(listaClientes);
-    }
-
     public static void exibirMenuClientes(ListaDupla listaClientes) {
         Scanner scanner = new Scanner(System.in);
         int opMC = 0;
 
+        
         while (opMC != 5) {
             System.out.println("\n+=======================+");
             System.out.println("|      Menu Clientes    |");
@@ -37,7 +32,35 @@ public class MenuClientes {
 
             switch (opMC) {
                 case 1:
-                    registrarCliente(scanner, listaClientes);
+                    System.out.println("| Registrar Cliente selecionado |");
+                    System.out.println("| Para registrar um cliente, informe os dados solicitados.");
+                    System.out.println("| Qual o nome do cliente? ");
+                    String nomeCliente = scanner.nextLine().trim();
+                    while (nomeCliente.isEmpty()) {
+                        System.out.println("| O nome do cliente não pode ser vazio. Tente novamente:");
+                        nomeCliente = scanner.nextLine().trim();
+                    }
+                    System.out.println("| Qual o número do cliente? (enter para pular) ");                    
+                    String numeroCliente = scanner.nextLine().trim();
+                    if (numeroCliente.isEmpty()) {
+                        numeroCliente = "Nenhum número cadastrado";
+                    }
+                    while (numeroCliente.length() < 8) {
+                        System.out.println("| O número do cliente deve ter pelo menos 8 caracteres. Tente novamente:");
+                        numeroCliente = scanner.nextLine().trim();
+                    }
+                    Cliente cliente = new Cliente(nomeCliente, numeroCliente);
+                    System.out.println("| Dados do cliente:");
+                    System.out.println("| " + cliente);
+                    System.out.println("| Confirma salvar? (S/N): ");
+                    String confirm = scanner.nextLine().trim();
+                    if (confirm.equalsIgnoreCase("S")) {
+                        listaClientes.adicionarUltimo(cliente);
+                        System.out.println("| Cliente registrado com sucesso!");
+                    } else {
+                        System.out.println("| Cadastro cancelado.");
+                    }
+                    
                     break;
                 case 2:
                     System.out.println("| Remover Cliente selecionado |");
@@ -58,32 +81,4 @@ public class MenuClientes {
         }
     }
 
-    private static void registrarCliente(Scanner scanner, ListaDupla listaClientes) {
-        System.out.println("| Registrar Cliente selecionado |");
-        System.out.print("| Qual o nome do cliente? ");
-        String nomeCliente = scanner.nextLine().trim();
-        while (nomeCliente.isEmpty()) {
-            System.out.print("| O nome do cliente não pode ser vazio. Tente novamente: ");
-            nomeCliente = scanner.nextLine().trim();
-        }
-
-        System.out.print("| Qual o número do cliente? (enter para pular) ");
-        String numeroCliente = scanner.nextLine().trim();
-        if (numeroCliente.isEmpty()) {
-            numeroCliente = "Nenhum número cadastrado";
-        }
-
-        Cliente cliente = new Cliente(nomeCliente, numeroCliente);
-        System.out.println("| Dados do cliente:");
-        System.out.println("| " + cliente);
-
-        System.out.print("| Confirma salvar? (S/N): ");
-        String confirm = scanner.nextLine().trim();
-        if (confirm.equalsIgnoreCase("S")) {
-            listaClientes.adicionarUltimo(cliente);
-            System.out.println("| Cliente registrado com sucesso!");
-        } else {
-            System.out.println("| Cadastro cancelado.");
-        }
-    }
 }
