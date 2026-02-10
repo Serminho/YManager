@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class MenuVendas {
 
-    public static void exibirMenuVendas() {
+    public static void exibirMenuVendas(ListaDupla listaVendas, ListaDupla listaPecas, ListaDupla listaClientes) {
         Scanner scanner = new Scanner(System.in);
         int opMV = 0;
 
@@ -18,18 +18,34 @@ public class MenuVendas {
             System.out.println("+=====================+");
             System.out.print("| Escolha uma opção: ");
 
-            opMV = scanner.nextInt();
+            try {
+                opMV = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("| Opção inválida.");
+                continue;
+            }
 
             switch (opMV) {
                 case 1:
-                    System.out.println("| Registrar Venda selecionado |");
-                    System.out.println("| Qual o nome do cliente?");
-                    String nomeClienteExistente = scanner.next();
-                    while (nomeClienteExistente.isEmpty()) {
-                        System.out.println("| O nome do cliente não pode ser vazio. Tente novamente:");
-                        nomeClienteExistente = scanner.next();
+                    System.out.println("| Nome do Cliente:");
+                    String nc = scanner.nextLine();
+                    System.out.println("| Nome da Peça:");
+                    String np = scanner.nextLine();
+
+                    Cliente cli = buscarCliente(listaClientes, nc); 
+                    Peca pec = buscarPeca(listaPecas, np);
+
+                    if (cli != null && pec != null) {
+                        Vendas novaVenda = new Vendas(pec, cli, "09/02/2026");
+                        System.out.println("| Quantidade vendida?");
+                        novaVenda.setQtVendida(Integer.parseInt(scanner.nextLine()));
+            
+                        listaVendas.adicionarUltimo(novaVenda);
+                        GerenciadorArquivo.salvarVendas(listaVendas); // SALVA NO ARQUIVO
+                        System.out.println("| Venda registrada e salva!");
+                    } else {
+                        System.out.println("| Erro: Cliente ou Peça não encontrados!");
                     }
-                    System.out.println("| Qual o nome da peça vendida?");
                     break;
 
                 case 2:
@@ -47,5 +63,27 @@ public class MenuVendas {
         }
     }
 
-    
+    private static Cliente buscarCliente(ListaDupla lista, String nome) {
+        Node atual = lista.cabeca;
+        while (atual != null) {
+            Cliente c = (Cliente) atual.dado;
+            if (c.getNome().equalsIgnoreCase(nome)) {
+                return c;
+            }
+            atual = atual.proximo;
+        }
+        return null;
+    }
+
+    private static Peca buscarPeca(ListaDupla lista, String nome) {
+        Node atual = lista.cabeca;
+        while (atual != null) {
+            Peca p = (Peca) atual.dado;
+            if (p.getNome().equalsIgnoreCase(nome)) {
+                return p;
+            }
+            atual = atual.proximo;
+        }
+        return null;
+    }
 }

@@ -53,6 +53,7 @@ public class MenuPecas {
 
                     Peca novaPeca = new Peca(nomePeca, precoPeca, custoPeca, materialPeca);
                     listaPecas.adicionarUltimo(novaPeca);
+                    GerenciadorArquivo.salvarPecas(listaPecas);
                     
                     System.out.println("| A peça " + nomePeca + " foi adicionada!");
                     pausar(scanner);
@@ -71,6 +72,7 @@ public class MenuPecas {
                         
                         if (removido) {
                             System.out.println("| A peça " + nomePecaRemover + " foi removida.");
+                            GerenciadorArquivo.salvarPecas(listaPecas);
                         } else {
                             System.out.println("| A peça '" + nomePecaRemover + "' não encontrada no sistema.");
                         }

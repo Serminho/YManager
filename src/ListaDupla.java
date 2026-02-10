@@ -78,23 +78,23 @@ public class ListaDupla {
         System.out.println("\n===");
     }
 
-    public boolean removerMeio(String nomePecaRemover) {
+    public boolean removerMeio(String nomeParaRemover) {
         Node atual = cabeca;
         while (atual != null) {
-            Peca pecaAtual = (Peca) atual.dado;
-            if (pecaAtual.getNome().equalsIgnoreCase(nomePecaRemover)) {
-                if (atual.anterior != null) {
-                    atual.anterior.proximo = atual.proximo;
-                } else {
-                    cabeca = atual.proximo;
-                }
-            
-                if (atual.proximo != null) {
-                    atual.proximo.anterior = atual.anterior;
-                } else {
-                    cauda = atual.anterior;
-                }
-            
+            String nomeAtual = "";
+            if (atual.dado instanceof Peca) {
+                nomeAtual = ((Peca) atual.dado).getNome();
+            } else if (atual.dado instanceof Cliente) {
+                nomeAtual = ((Cliente) atual.dado).getNome();
+            }
+
+            if (nomeAtual.equalsIgnoreCase(nomeParaRemover)) {
+                if (atual.anterior != null) atual.anterior.proximo = atual.proximo;
+                else cabeca = atual.proximo;
+
+                if (atual.proximo != null) atual.proximo.anterior = atual.anterior;
+                else cauda = atual.anterior;
+
                 tamanho--;
                 return true;
             }

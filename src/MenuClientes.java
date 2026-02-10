@@ -5,7 +5,7 @@ public class MenuClientes {
         Scanner scanner = new Scanner(System.in);
         int opMC = 0;
 
-        
+
         while (opMC != 5) {
             System.out.println("\n+=======================+");
             System.out.println("|      Menu Clientes    |");
@@ -56,6 +56,7 @@ public class MenuClientes {
                     String confirm = scanner.nextLine().trim();
                     if (confirm.equalsIgnoreCase("S")) {
                         listaClientes.adicionarUltimo(cliente);
+                        GerenciadorArquivo.salvarClientes(listaClientes);
                         System.out.println("| Cliente registrado com sucesso!");
                     } else {
                         System.out.println("| Cadastro cancelado.");
